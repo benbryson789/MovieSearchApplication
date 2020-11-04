@@ -1,0 +1,42 @@
+﻿@model List<Movie150.Models.Movie>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+@using (Html.BeginForm("SearchResultTitle", "Movie", FormMethod.Get))
+{
+    @Html.TextBox("title")
+    <input type="submit" value="Search" />
+}
+
+
+@using (Html.BeginForm("SearchResultGenre", "Movie", FormMethod.Get))
+{
+    @Html.DropDownList("genre", new List<SelectListItem> {
+        new SelectListItem { Text = "Comedy", Value = "Comedy", Selected = true },
+        new SelectListItem { Text = "Romance", Value = "Romance" },
+        new SelectListItem { Text = "Sci-Fi", Value = "Sci-Fi" },
+        new SelectListItem { Text = "Horror", Value = "Horror" }
+    })
+    <input type="submit" value="Search" />
+}
+
+@*<form asp-controller="Movie" asp-action="SearchResultGenre">
+
+        <div>
+
+            <select name="genre">
+                @foreach (var movie in Model)
+                {
+                    <option value="@movie.Genre">@movie.Genre</option>
+                }
+            </select>
+
+        </div>
+
+        <div>
+            <input type="submit" value="Submit" class="'btn btn-primary" />
+        </div>
+    </form>*@
